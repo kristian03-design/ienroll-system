@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iEnroll - Step 4</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" href="/src/images/logo.png" type="image/x-icon">
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00BFFF',
+                        secondary: '#F8F9FA',
+                        accent: '#FFA500'
+                    }
+                }
+            }
+        }
+    </script>
+        <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    </head>
+    <body class="bg-gray-50 font-['Inter']">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"></path>
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-xl font-semibold text-gray-900">iEnroll</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Progress Tracker -->
+            <div class="mb-8">
+                <div class="flex items-center justify-center space-x-4">
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-gray-900">Personal
+                            Info</span>
+                    </div>
+                    <div class="w-16 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-gray-900">Academic
+                            Info</span>
+                    </div>
+                    <div class="w-16 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-gray-900">Requirements</span>
+                    </div>
+                    <div class="w-16 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                            <span
+                                class="text-white text-sm font-medium">4</span>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-primary">Review
+                            & Submit</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Review and Submission -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Application Summary -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <!-- Step Indicator -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h2
+                                    class="text-2xl font-bold text-gray-900">Application
+                                    Summary</h2>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center space-x-2">
+                                        <div
+                                            class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                        <span
+                                            class="text-sm text-green-600 font-medium"
+                                            id="draftStatus">Draft Saved</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm text-gray-600">Step
+                                            4 of 4</span>
+                                        <div
+                                            class="w-24 bg-gray-200 rounded-full h-2">
+                                            <div
+                                                class="bg-primary h-2 rounded-full"
+                                                style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">Please review your
+                                information before submitting your enrollment
+                                application.</p>
+                        </div>
+
+                        <div id="applicationSummary" class="space-y-6">
+                            <!-- Personal Information Section -->
+                            <div>
+                                <h3
+                                    class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                    <svg class="w-5 h-5 text-primary mr-2"
+                                        fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Personal Information
+                                </h3>
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                                    <div>
+                                        <span
+                                            class="font-medium text-gray-700">Full
+                                            Name:</span>
+                                        <span id="reviewFullName"
+                                            class="ml-2 text-gray-900">-</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="font-medium text-gray-700">Date
+                                            of Birth:</span>
+                                        <span id="reviewDOB"
+                                            class="ml-2 text-gray-900">-</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="font-medium text-gray-700">Email:</span>
+                                        <span id="reviewEmail"
+                                            class="ml-2 text-gray-900">-</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="font-medium text-gray-700">Phone:</span>
+                                        <span id="reviewPhone"
+                                            class="ml-2 text-gray-900">-</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="font-medium text-gray-700">Address:</span>
+                                        <span id="reviewAddress"
+                                            class="ml-2 text-gray-900">-</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="font-medium text-gray-700">Priority
+                                            Status:</span>
+                                        <span id="reviewPriority"
+                                            class="ml-2 text-gray-900">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Academic Information Section -->
+                            <div>
+                                <h3
+                                    class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                    <svg class="w-5 h-5 text-primary mr-2"
+                                        fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838l-2.727 1.17a1 1 0 00-.356.257l-4 1.714a1 1 0 01-.788-1.838l7-3a1 1 0 00.788 0l7 3a1 1 0 000-1.84L14.75 8.051a.999.999 0 01-.356-.257l-4-1.714a1 1 0 11-.788-1.838l2.727 1.17a1 1 0 00.356.257l4 1.714a1 1 0 01.788 1.838l-7 3z"></path>
+                                    </svg>
+                                    Academic Information
+                                </h3>
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                                    <div>
+                                        <span
+                                            class="font-medium text-gray-700">Program:</span>
+                                        <span id="reviewProgram"
+                                            class="ml-2 text-gray-900">-</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="font-medium text-gray-700">Last
+                                            School:</span>
+                                        <span id="reviewLastSchool"
+                                            class="ml-2 text-gray-900">-</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="font-medium text-gray-700">Last
+                                            Grade:</span>
+                                        <span id="reviewLastGrade"
+                                            class="ml-2 text-gray-900">-</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="font-medium text-gray-700">Graduation
+                                            Year:</span>
+                                        <span id="reviewGraduationYear"
+                                            class="ml-2 text-gray-900">-</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="font-medium text-gray-700">GPA:</span>
+                                        <span id="reviewGPA"
+                                            class="ml-2 text-gray-900">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Documents Section -->
+                            <div>
+                                <h3
+                                    class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                    <svg class="w-5 h-5 text-primary mr-2"
+                                        fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    Submitted Documents
+                                </h3>
+                                <div id="documentsReview"
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 text-gray-400 mr-2"
+                                            fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                                        </svg>
+                                        <span class="text-sm font-medium text-gray-900">Form
+                                            137</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 text-gray-400 mr-2"
+                                            fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                                        </svg>
+                                        <span class="text-sm font-medium text-gray-900">Report
+                                            Card</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Terms and Conditions -->
+                            <div class="border-t border-gray-200 pt-6">
+                                <h3
+                                    class="text-lg font-semibold text-gray-800 mb-4">Terms
+                                    and Conditions</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <input type="checkbox"
+                                            id="termsAccepted"
+                                            name="termsAccepted" required
+                                            class="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="termsAccepted"
+                                            class="ml-3 text-sm text-gray-700">
+                                            I have read and agree to the <a
+                                                href="#"
+                                                class="text-primary hover:underline">Terms
+                                                and Conditions</a> and <a
+                                                href="#"
+                                                class="text-primary hover:underline">Privacy
+                                                Policy</a>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <input type="checkbox" id="dataConsent"
+                                            name="dataConsent" required
+                                            class="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="dataConsent"
+                                            class="ml-3 text-sm text-gray-700">
+                                            I consent to the processing of my
+                                            personal data for enrollment
+                                            purposes
+                                        </label>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <input type="checkbox"
+                                            id="communicationConsent"
+                                            name="communicationConsent"
+                                            class="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="communicationConsent"
+                                            class="ml-3 text-sm text-gray-700">
+                                            I agree to receive communications
+                                            about my enrollment status and
+                                            updates
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form Actions -->
+                            <div
+                                class="flex justify-between pt-6 border-t border-gray-200">
+                                <button type="button" onclick="goToStep3()"
+                                    class="flex items-center px-6 py-3 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                    <svg class="w-5 h-5 mr-2" fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                    Back to Step 3
+                                </button>
+                                <button type="button"
+                                    onclick="submitEnrollment()" id="submitBtn"
+                                    class="flex items-center px-8 py-3 bg-primary text-white rounded-lg font-medium hover:bg-blue-600 transition-colors">
+                                    Submit Application
+                                    <svg class="w-5 h-5 ml-2" fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="successMessage"
+                        class="hidden bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-green-600"
+                                    fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <h3
+                                class="text-2xl font-bold text-gray-900 mb-2">Application
+                                Submitted Successfully!</h3>
+                            <p class="text-gray-600 mb-6">Your enrollment
+                                application has been received and is being
+                                processed.</p>
+
+                            <!-- Queue Information -->
+                            <div
+                                class="bg-primary text-white rounded-lg p-6 mb-6">
+                                <h4 class="text-xl font-bold mb-4">Your Queue
+                                    Information</h4>
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                                    <div>
+                                        <div class="text-3xl font-bold"
+                                            id="queueNumber">-</div>
+                                        <div class="text-sm opacity-90">Queue
+                                            Number</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-3xl font-bold"
+                                            id="queuePosition">-</div>
+                                        <div
+                                            class="text-sm opacity-90">Position</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-3xl font-bold"
+                                            id="waitTime">-</div>
+                                        <div class="text-sm opacity-90">Wait
+                                            Time</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="text-sm text-gray-600">You will
+                                    receive a confirmation email shortly.</p>
+                                <p class="text-sm text-gray-600">You can track
+                                    your application status using your queue
+                                    number.</p>
+                                <div
+                                    class="mt-6 flex items-center justify-center space-x-3">
+                                    <span class="text-sm text-gray-700">Want to
+                                        submit another application?</span>
+                                    <button id="newApplicationBtn"
+                                        class="px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors">Start
+                                        New</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <!-- Application Status -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <h3
+                            class="text-lg font-semibold text-gray-800 mb-4">Application
+                            Status</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Personal
+                                    Info</span>
+                                <div
+                                    class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Academic
+                                    Info</span>
+                                <div
+                                    class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span
+                                    class="text-sm text-gray-600">Requirements</span>
+                                <div
+                                    class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Review &
+                                    Submit</span>
+                                <div
+                                    class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                            <span
+                                class="text-sm text-blue-600 font-medium">Ready
+                                for submission</span>
+                        </div>
+                    </div>
+
+                    <!-- What Happens Next -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <h3
+                            class="text-lg font-semibold text-gray-800 mb-4">What
+                            Happens Next?</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div
+                                    class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">1</div>
+                                <div>
+                                    <h4
+                                        class="text-sm font-medium text-gray-800">Application
+                                        Review</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Your
+                                        application will be reviewed by our
+                                        admissions team</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">2</div>
+                                <div>
+                                    <h4
+                                        class="text-sm font-medium text-gray-800">Document
+                                        Verification</h4>
+                                    <p
+                                        class="text-xs text-gray-600 mt-1">Required
+                                        documents will be verified</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">3</div>
+                                <div>
+                                    <h4
+                                        class="text-sm font-medium text-gray-800">Decision</h4>
+                                    <p class="text-xs text-gray-600 mt-1">You'll
+                                        receive an admission decision</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <h3
+                            class="text-lg font-semibold text-gray-800 mb-4">Need
+                            Help?</h3>
+                        <div class="space-y-3">
+                            <div
+                                class="flex items-center text-sm text-gray-600">
+                                <svg class="w-5 h-5 text-primary mr-2"
+                                    fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                    <path
+                                        d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                </svg>
+                                <span>admissions@school.edu</span>
+                            </div>
+                            <div
+                                class="flex items-center text-sm text-gray-600">
+                                <svg class="w-5 h-5 text-primary mr-2"
+                                    fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                                </svg>
+                                <span>+63 917 123 4567</span>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full mt-4 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors">
+                            Contact Support
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-200 mt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="text-center text-sm text-gray-500">
+                    <p>&copy; 2025 iEnroll System. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadApplicationSummary();
+            updateDraftStatus();
+            // Bind new application button
+            document.getElementById('newApplicationBtn')?.addEventListener('click', function() {
+                // Optional: clear drafts to start fresh
+                localStorage.removeItem('enrollmentDraft');
+                localStorage.removeItem('academicDraft');
+                localStorage.removeItem('uploadedFiles');
+                // Navigate back to first step
+                window.location.href = 'enrollment-system.html';
+            });
+        });
+
+        // Navigation functions
+        function goToStep3() {
+            window.location.href = 'enrollment-step3.html';
+        }
+
+        function submitEnrollment() {
+            // Validate terms acceptance
+            const termsAccepted = document.getElementById('termsAccepted').checked;
+            const dataConsent = document.getElementById('dataConsent').checked;
+
+            if (!termsAccepted || !dataConsent) {
+                alert('Please accept the required terms and conditions to continue.');
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+            `;
+
+            // Build payload from saved drafts
+            const personalDraft = JSON.parse(localStorage.getItem('enrollmentDraft') || '{}');
+            const academicDraft = JSON.parse(localStorage.getItem('academicDraft') || '{}');
+
+            // Compute academic year (e.g., 2024-2025; starts in June)
+            const now = new Date();
+            const startYear = (now.getMonth() + 1) >= 6 ? now.getFullYear() : now.getFullYear() - 1;
+            const academicYear = `${startYear}-${startYear + 1}`;
+
+            const toLower = (v) => (typeof v === 'string' ? v.toLowerCase() : v);
+            const derivePriority = () => {
+                if (personalDraft.transfereeStudent === 'on' || personalDraft.returningStudent === 'on') return 'high';
+                return 'medium';
+            };
+
+            const payload = {
+                first_name: personalDraft.firstName || '',
+                last_name: personalDraft.lastName || '',
+                middle_name: personalDraft.middleName || '',
+                email: personalDraft.email || '',
+                phone: personalDraft.phone || '',
+                date_of_birth: personalDraft.dateOfBirth || '',
+                gender: toLower(personalDraft.gender) || 'other',
+                address: [personalDraft.street, personalDraft.barangay, personalDraft.city, personalDraft.province, personalDraft.zip].filter(Boolean).join(', '),
+                city: personalDraft.city || '',
+                state: personalDraft.state || '',
+                zip_code: personalDraft.zip || '',
+                emergency_contact_name: personalDraft.emergencyContactName || '',
+                emergency_contact_phone: personalDraft.emergencyContactPhone || '',
+                emergency_contact_relationship: personalDraft.emergencyContactRelation || '',
+                academic_year: academicYear,
+                grade_level: toLower(academicDraft.lastGrade || 'college'),
+                previous_school: academicDraft.lastSchool || '',
+                previous_grade: academicDraft.lastGrade || '',
+                priority_level: derivePriority()
+            };
+
+            // Basic client-side required checks
+            if (!payload.first_name || !payload.last_name || !payload.email || !payload.date_of_birth || !payload.address) {
+                alert('Please complete required personal information fields before submitting.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
+                return;
+            }
+
+            // Call PHP API
+            fetch('../api/enrollment.php?action=submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(res => {
+                if (!res || !res.success) {
+                    throw new Error(res?.message || 'Submission failed');
+                }
+
+                const queueNumber = res.data?.queue_number || 0;
+                const queuePosition =  res.data?.queue_position || 0; // optional if provided later
+                const waitTime = 15; // fallback display
+
+                // Update queue display
+                document.getElementById('queueNumber').textContent = queueNumber;
+                if (document.getElementById('queuePosition')) document.getElementById('queuePosition').textContent = queuePosition || '-';
+                if (document.getElementById('waitTime')) document.getElementById('waitTime').textContent = `${waitTime} min`;
+
+                // Hide form and show success message
+                document.getElementById('applicationSummary').parentElement.classList.add('hidden');
+                document.getElementById('successMessage').classList.remove('hidden');
+
+                // Save to localStorage for queue tracking
+                localStorage.setItem('enrollmentComplete', 'true');
+                localStorage.setItem('queueData', JSON.stringify({
+                    queueNumber,
+                    queuePosition: queuePosition || null,
+                    waitTime,
+                    timestamp: new Date().toISOString()
+                }));
+
+                // Reset submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
+
+                // Start queue updates (optional)
+                startQueueUpdates(queuePosition || 0, waitTime);
+            })
+            .catch(err => {
+                alert('Error submitting application: ' + err.message);
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
+            });
+        }
+
+        function startQueueUpdates(position, waitTime) {
+            // Update queue position and wait time every 30 seconds
+            setInterval(() => {
+                if (position > 1) {
+                    position--;
+                    document.getElementById('queuePosition').textContent = position;
+                }
+
+                if (waitTime > 1) {
+                    waitTime--;
+                    document.getElementById('waitTime').textContent = `${waitTime} min`;
+                }
+            }, 30000);
+        }
+
+        // Load and display application summary
+        function loadApplicationSummary() {
+            // Load personal information
+            const personalDraft = localStorage.getItem('enrollmentDraft');
+            if (personalDraft) {
+                const personalData = JSON.parse(personalDraft);
+                document.getElementById('reviewFullName').textContent = `${personalData.firstName || ''} ${personalData.lastName || ''}`.trim() || '-';
+                document.getElementById('reviewDOB').textContent = personalData.dateOfBirth || '-';
+                document.getElementById('reviewEmail').textContent = personalData.email || '-';
+                document.getElementById('reviewPhone').textContent = personalData.phone || '-';
+                
+                const addressParts = [personalData.street, personalData.barangay, personalData.city, personalData.province, personalData.zip].filter(Boolean).join(', ');
+                document.getElementById('reviewAddress').textContent = addressParts || '-';
+                
+                // Check priority status
+                const priorityFields = ['newStudent', 'oldStudent', 'returningStudent', 'transfereeStudent'];
+                const selectedPriority = priorityFields.find(field => personalData[field] === 'on');
+                document.getElementById('reviewPriority').textContent = selectedPriority ? 
+                    selectedPriority.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()) : 'None';
+            }
+
+            // Load academic information
+            const academicDraft = localStorage.getItem('academicDraft');
+            if (academicDraft) {
+                const academicData = JSON.parse(academicDraft);
+                document.getElementById('reviewProgram').textContent = academicData.program || '-';
+                document.getElementById('reviewLastSchool').textContent = academicData.lastSchool || '-';
+                document.getElementById('reviewLastGrade').textContent = academicData.lastGrade || '-';
+                document.getElementById('reviewGraduationYear').textContent = academicData.graduationYear || '-';
+                document.getElementById('reviewGPA').textContent = academicData.gpa || '-';
+            }
+
+            // Load documents information
+            loadDocumentsReview();
+        }
+
+        function loadDocumentsReview() {
+            const documentsContainer = document.getElementById('documentsReview');
+            
+            // Check if there are uploaded files (simulated)
+            const uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles') || '[]');
+            
+            if (uploadedFiles.length > 0) {
+                documentsContainer.innerHTML = uploadedFiles.map(file => `
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm font-medium text-gray-900">${file.name}</span>
+                        </div>
+                        <span class="text-xs text-green-600 font-medium">Uploaded</span>
+                    </div>
+                `).join('');
+            } else {
+                // Show required documents with status
+                const requiredDocs = [
+                    'High School Transcript',
+                    'Birth Certificate', 
+                    'Valid ID',
+                    'Medical Certificate'
+                ];
+                
+                documentsContainer.innerHTML = requiredDocs.map(doc => `
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <span class="text-sm font-medium text-gray-700">${doc}</span>
+                        </div>
+                        <span class="text-xs text-orange-600 font-medium">Pending</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Draft status functionality
+        function updateDraftStatus() {
+            const draftStatus = document.getElementById('draftStatus');
+            if (draftStatus) {
+                draftStatus.innerHTML = 'Draft Loaded ✓';
+                draftStatus.className = 'text-sm text-green-600 font-medium';
+                
+                // Reset status after 3 seconds
+                setTimeout(() => {
+                    draftStatus.innerHTML = 'Ready to Submit';
+                    draftStatus.className = 'text-sm text-blue-600 font-medium';
+                }, 3000);
+            }
+        }
+    </script>
+    </body>
+</html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iEnroll Admin - Login</title>
+        <link rel="icon" href="/src/images/logo.png" type="image/x-icon">
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00BFFF',
+                        'primary-dark': '#0099CC',
+                        secondary: '#F8FAFC',
+                        accent: '#0D9488',
+                        'accent-orange': '#F97316'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+        <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .form-input {
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus {
+            transform: scale(1.02);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #00BFFF 0%, #0099CC 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0099CC 0%, #007A99 100%);
+            transform: translateY(-1px);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .password-toggle {
+            transition: all 0.2s ease;
+        }
+        
+        .password-toggle:hover {
+            color: #00BFFF;
+        }
+        
+        .strength-bar {
+            transition: width 0.3s ease;
+        }
+        
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    </head>
+    <body
+        class="bg-gradient-to-br from-blue-50 via-white to-cyan-50 min-h-screen flex items-center justify-center p-4">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+                class="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full"></div>
+            <div
+                class="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/5 rounded-full"></div>
+        </div>
+
+        <!-- Main Login Card -->
+        <div class="relative w-full max-w-md">
+            <!-- Logo and Title -->
+            <div class="text-center mb-8 ">
+                <div
+                    class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <svg class="w-10 h-10 text-white" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">iEnroll
+                    Admin</h1>
+                <p class="text-gray-600">Sign in to your admin account</p>
+            </div>
+
+            <!-- Login Form Card -->
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <form id="loginForm" class="space-y-6">
+                    <!-- Email/Username Field -->
+                    <div>
+                        <label for="email"
+                            class="block text-sm font-medium text-gray-700 mb-2">Email
+                            Address</label>
+                        <div class="relative">
+                            <div
+                                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                                </svg>
+                            </div>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-input block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                placeholder="Enter your email"
+                                required>
+                        </div>
+                        <div id="emailError"
+                            class="hidden mt-2 text-sm text-red-600"></div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password"
+                            class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                        <div class="relative">
+                            <div
+                                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
+                            </div>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                class="form-input block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                placeholder="Enter your password"
+                                required>
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <svg id="eyeIcon" class="h-5 w-5 text-gray-400"
+                                    fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="passwordError"
+                            class="hidden mt-2 text-sm text-red-600"></div>
+
+                        <!-- Password Strength Indicator (Optional) -->
+                        <div id="passwordStrength" class="hidden mt-2">
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    class="flex-1 bg-gray-200 rounded-full h-2">
+                                    <div id="strengthBar"
+                                        class="strength-bar h-2 rounded-full transition-all duration-300"
+                                        style="width: 0%"></div>
+                                </div>
+                                <span id="strengthText"
+                                    class="text-xs text-gray-500">Weak</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input
+                                id="rememberMe"
+                                name="rememberMe"
+                                type="checkbox"
+                                class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                            <label for="rememberMe"
+                                class="ml-2 block text-sm text-gray-700">Remember
+                                me</label>
+                        </div>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button
+                        type="submit"
+                        id="loginBtn"
+                        class="btn-primary w-full flex justify-center py-3 px-4 border border-transparent rounded-xl text-sm font-medium text-white shadow-lg hover:shadow-xl">
+                        <span id="loginBtnText">Sign In</span>
+                        <svg id="loginSpinner"
+                            class="hidden loading-spinner ml-2 h-5 w-5 text-white"
+                            fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10"
+                                stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="relative my-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white text-gray-500">Need
+                            help?</span>
+                    </div>
+                </div>
+
+                <!-- Contact Support -->
+                <div class="text-center">
+                    <a href="contact-admin.html"
+                        class="text-sm text-gray-600 hover:text-primary transition-colors">
+                        Contact system administrator
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center mt-8 slide-up">
+                <p class="text-sm text-gray-500">
+                    © 2025 iEnroll System. All rights reserved.
+                </p>
+            </div>
+        </div>
+
+        <!-- Status Alerts -->
+        <div id="alertContainer"
+            class="fixed top-4 right-4 z-50 space-y-2"></div>
+
+        <!-- Security Notice Modal -->
+        <div id="securityModal"
+            class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+            <div
+                class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-2xl bg-white">
+                <div class="mt-3 text-center">
+                    <div
+                        class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+                        <svg class="h-6 w-6 text-red-600" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Account
+                        Locked</h3>
+                    <p class="text-sm text-gray-500 mb-4">
+                        Too many failed login attempts. Please try again in
+                        <span id="lockTimer">5</span> minutes or contact
+                        administrator.
+                    </p>
+                    <button id="closeSecurityModal"
+                        class="w-full bg-primary text-white py-2 px-4 rounded-xl hover:bg-primary-dark transition-colors">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        // DOM Elements
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const togglePassword = document.getElementById('togglePassword');
+        const eyeIcon = document.getElementById('eyeIcon');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginBtnText = document.getElementById('loginBtnText');
+        const loginSpinner = document.getElementById('loginSpinner');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const passwordStrength = document.getElementById('passwordStrength');
+        const strengthBar = document.getElementById('strengthBar');
+        const strengthText = document.getElementById('strengthText');
+        const alertContainer = document.getElementById('alertContainer');
+        const securityModal = document.getElementById('securityModal');
+        const lockTimer = document.getElementById('lockTimer');
+        const closeSecurityModal = document.getElementById('closeSecurityModal');
+
+        // Security variables
+        let failedAttempts = 0;
+        let isLocked = false;
+        let lockTimeout;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if account is locked
+            checkAccountLock();
+            
+            // Load saved email if remember me was checked
+            loadSavedCredentials();
+        });
+
+        // Password Toggle
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            if (type === 'text') {
+                eyeIcon.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"></path>
+                `;
+            } else {
+                eyeIcon.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                `;
+            }
+        });
+
+        // Password Strength Check (Optional)
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            if (password.length > 0) {
+                passwordStrength.classList.remove('hidden');
+                const strength = checkPasswordStrength(password);
+                updatePasswordStrength(strength);
+            } else {
+                passwordStrength.classList.add('hidden');
+            }
+        });
+
+        // Form Submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (isLocked) {
+                showAlert('Account is temporarily locked. Please wait.', 'error');
+                return;
+            }
+
+            if (validateForm()) {
+                performLogin();
+            }
+        });
+
+        // Form Validation
+        function validateForm() {
+            let isValid = true;
+            
+            // Reset errors
+            clearErrors();
+            
+            // Email validation
+            const email = emailInput.value.trim();
+            if (!email) {
+                showFieldError(emailError, 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showFieldError(emailError, 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Password validation
+            const password = passwordInput.value;
+            if (!password) {
+                showFieldError(passwordError, 'Password is required');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        // Email validation helper
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Show field error
+        function showFieldError(errorElement, message) {
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+        }
+
+        // Clear all errors
+        function clearErrors() {
+            emailError.classList.add('hidden');
+            passwordError.classList.add('hidden');
+        }
+
+        // Perform Login
+        async function performLogin() {
+            setLoadingState(true);
+            
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Mock credentials check (replace with actual API call)
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+                
+                if (email === 'admin@ienroll.com' && password === 'admin123') {
+                    // Success
+                    failedAttempts = 0;
+                    saveCredentials();
+                    showAlert('Login successful! Redirecting...', 'success');
+                    
+                    // Simulate redirect
+                    setTimeout(() => {
+                        window.location.href = 'admin-dashboard.html';
+                    }, 1500);
+                } else {
+                    // Failed login
+                    failedAttempts++;
+                    handleFailedLogin();
+                }
+            } catch (error) {
+                showAlert('An error occurred. Please try again.', 'error');
+            } finally {
+                setLoadingState(false);
+            }
+        }
+
+        // Handle failed login
+        function handleFailedLogin() {
+            if (failedAttempts >= 3) {
+                lockAccount();
+            } else {
+                showAlert(`Invalid credentials. ${3 - failedAttempts} attempts remaining.`, 'error');
+            }
+        }
+
+        // Lock account
+        function lockAccount() {
+            isLocked = true;
+            const lockDuration = 5; // minutes
+            localStorage.setItem('accountLocked', Date.now() + (lockDuration * 60 * 1000));
+            
+            showAlert('Account locked due to multiple failed attempts.', 'error');
+            showSecurityModal(lockDuration);
+        }
+
+        // Show security modal
+        function showSecurityModal(duration) {
+            securityModal.classList.remove('hidden');
+            let timeLeft = duration * 60;
+            
+            const timer = setInterval(() => {
+                timeLeft--;
+                lockTimer.textContent = Math.ceil(timeLeft / 60);
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    unlockAccount();
+                }
+            }, 1000);
+        }
+
+        // Unlock account
+        function unlockAccount() {
+            isLocked = false;
+            failedAttempts = 0;
+            localStorage.removeItem('accountLocked');
+            securityModal.classList.add('hidden');
+            showAlert('Account unlocked. You can now try logging in again.', 'success');
+        }
+
+        // Check account lock on page load
+        function checkAccountLock() {
+            const lockTime = localStorage.getItem('accountLocked');
+            if (lockTime && Date.now() < parseInt(lockTime)) {
+                isLocked = true;
+                const timeLeft = Math.ceil((parseInt(lockTime) - Date.now()) / (60 * 1000));
+                showSecurityModal(timeLeft);
+            }
+        }
+
+        // Close security modal
+        closeSecurityModal.addEventListener('click', function() {
+            securityModal.classList.add('hidden');
+        });
+
+        // Set loading state
+        function setLoadingState(loading) {
+            if (loading) {
+                loginBtn.disabled = true;
+                loginBtnText.textContent = 'Signing In...';
+                loginSpinner.classList.remove('hidden');
+            } else {
+                loginBtn.disabled = false;
+                loginBtnText.textContent = 'Sign In';
+                loginSpinner.classList.add('hidden');
+            }
+        }
+
+        // Show alert
+        function showAlert(message, type) {
+            const alert = document.createElement('div');
+            alert.className = `p-4 rounded-lg shadow-lg max-w-sm transform transition-all duration-300 ${
+                type === 'success' 
+                    ? 'bg-green-500 text-white' 
+                    : 'bg-red-500 text-white'
+            }`;
+            
+            alert.innerHTML = `
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        ${type === 'success' 
+                            ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>'
+                            : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>'
+                        }
+                    </svg>
+                    <span class="font-medium">${message}</span>
+                </div>
+            `;
+            
+            alertContainer.appendChild(alert);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        }
+
+        // Password strength checker
+        function checkPasswordStrength(password) {
+            let score = 0;
+            
+            if (password.length >= 8) score++;
+            if (/[a-z]/.test(password)) score++;
+            if (/[A-Z]/.test(password)) score++;
+            if (/[0-9]/.test(password)) score++;
+            if (/[^A-Za-z0-9]/.test(password)) score++;
+            
+            if (score <= 2) return 'weak';
+            if (score <= 3) return 'medium';
+            return 'strong';
+        }
+
+        // Update password strength display
+        function updatePasswordStrength(strength) {
+            const colors = {
+                weak: { bar: 'bg-red-500', text: 'Weak', width: '33%' },
+                medium: { bar: 'bg-yellow-500', text: 'Medium', width: '66%' },
+                strong: { bar: 'bg-green-500', text: 'Strong', width: '100%' }
+            };
+            
+            const config = colors[strength];
+            strengthBar.className = `strength-bar h-2 rounded-full transition-all duration-300 ${config.bar}`;
+            strengthBar.style.width = config.width;
+            strengthText.textContent = config.text;
+            strengthText.className = `text-xs ${config.bar.replace('bg-', 'text-')}`;
+        }
+
+        // Save credentials if remember me is checked
+        function saveCredentials() {
+            const rememberMe = document.getElementById('rememberMe').checked;
+            if (rememberMe) {
+                localStorage.setItem('rememberedEmail', emailInput.value.trim());
+                localStorage.setItem('rememberMe', 'true');
+            } else {
+                localStorage.removeItem('rememberedEmail');
+                localStorage.removeItem('rememberMe');
+            }
+        }
+
+        // Load saved credentials
+        function loadSavedCredentials() {
+            const rememberedEmail = localStorage.getItem('rememberedEmail');
+            const rememberMe = localStorage.getItem('rememberMe');
+            
+            if (rememberedEmail && rememberMe === 'true') {
+                emailInput.value = rememberedEmail;
+                document.getElementById('rememberMe').checked = true;
+            }
+        }
+
+        // Close modal when clicking outside
+        securityModal.addEventListener('click', function(e) {
+            if (e.target === securityModal) {
+                securityModal.classList.add('hidden');
+            }
+        });
+    </script>
+    </body>
+</html>

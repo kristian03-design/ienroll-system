@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iEnroll – Contact Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="/src/images/logo.png" type="image/x-icon">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00BFFF',
+            secondary: '#F1F5F9',
+            accentTeal: '#14b8a6',
+            accentOrange: '#f59e0b'
+          },
+          fontFamily: {
+            inter: ['Inter','sans-serif']
+          },
+          boxShadow: {
+            soft: '0 10px 25px rgba(0,0,0,0.08)'
+          }
+        }
+      }
+    }
+  </script>
+    <style>
+    .fade-in { animation: fadeIn 0.3s ease-in; }
+    @keyframes fadeIn { from {opacity: 0} to {opacity: 1} }
+  </style>
+  </head>
+  <body
+    class="font-inter bg-gradient-to-br from-white via-secondary to-white min-h-screen">
+    <!-- Page Shell -->
+    <header class="border-b border-gray-200 bg-white/80 backdrop-blur">
+      <div
+        class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-end">
+        <div class="text-md text-gray-500">iEnroll Support</div>
+      </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <!-- Alerts container -->
+      <div id="alertContainer" class="space-y-3 mb-6" aria-live="polite"></div>
+
+      <div class="bg-white rounded-2xl shadow-soft p-6 sm:p-8 fade-in">
+        <div class="mb-6">
+          <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">Contact
+            Admin</h1>
+          <p class="mt-2 text-gray-600">Have an issue or question? Send us a
+            message and we’ll get back to you shortly.</p>
+        </div>
+
+        <!-- Submission method -->
+        <fieldset class="mb-6">
+          <legend class="text-sm font-medium text-gray-700 mb-2">Submission
+            method</legend>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" role="radiogroup"
+            aria-label="Submission method">
+            <label
+              class="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+              <input type="radio" name="submitMethod" value="email"
+                class="text-primary" checked />
+              <div class="text-sm">
+                <div class="font-medium text-gray-900">Email API</div>
+                <div class="text-gray-600">Send via SendGrid/Nodemailer</div>
+              </div>
+            </label>
+            <label
+              class="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+              <input type="radio" name="submitMethod" value="db"
+                class="text-primary" />
+              <div class="text-sm">
+                <div class="font-medium text-gray-900">Store in Dashboard</div>
+                <div class="text-gray-600">Create a ticket for admin
+                  review</div>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <form id="contactForm" novalidate class="space-y-5">
+          <!-- Full Name -->
+          <div>
+            <label for="fullName"
+              class="block text-sm font-medium text-gray-700 mb-1">Full Name
+              <span class="text-red-500" aria-hidden="true">*</span></label>
+            <div class="relative">
+              <span
+                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-400" fill="currentColor"
+                  viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </span>
+              <input id="fullName" name="fullName" type="text" required
+                aria-required="true" aria-describedby="fullNameError"
+                class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="Enter your full name" />
+            </div>
+            <p id="fullNameError" class="mt-1 text-xs text-red-600 hidden"></p>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email"
+              class="block text-sm font-medium text-gray-700 mb-1">Email Address
+              <span class="text-red-500" aria-hidden="true">*</span></label>
+            <div class="relative">
+              <span
+                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-400" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                </svg>
+              </span>
+              <input id="email" name="email" type="email" required
+                aria-required="true" aria-describedby="emailError"
+                class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="your@email.com" />
+            </div>
+            <p id="emailError" class="mt-1 text-xs text-red-600 hidden"></p>
+          </div>
+
+          <!-- Subject -->
+          <div>
+            <label for="subject"
+              class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+            <div class="relative">
+              <span
+                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-400" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </span>
+              <select id="subject" name="subject"
+                class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                <option>Login Issue</option>
+                <option>Enrollment Error</option>
+                <option>Technical Issue</option>
+                <option>Account Issue</option>
+                <option>Queue Issue</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label for="message"
+              class="block text-sm font-medium text-gray-700 mb-1">Message /
+              Description <span class="text-red-500"
+                aria-hidden="true">*</span></label>
+            <div class="relative">
+              <span class="absolute top-3 left-0 pl-3 pointer-events-none">
+                <svg class="h-5 w-5 text-gray-400" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4-.8L3 20l.8-3.2A7.92 7.92 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </span>
+              <textarea id="message" name="message" rows="5" required
+                aria-required="true" aria-describedby="messageError"
+                class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="Describe the issue you’re facing"></textarea>
+            </div>
+            <p id="messageError" class="mt-1 text-xs text-red-600 hidden"></p>
+          </div>
+
+          <!-- Attachment -->
+          <div>
+            <div class="flex items-center justify-between">
+              <label for="attachment"
+                class="block text-sm font-medium text-gray-700 mb-1">Attachment
+                (optional)</label>
+              <button type="button" id="attachmentHint"
+                class="text-xs text-gray-500 hover:text-gray-700 flex items-center"
+                title="JPG, PNG, or PDF. Max 5 MB.">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24" aria-hidden="true"><path
+                    stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M12 18a6 6 0 110-12 6 6 0 010 12z" /></svg>
+                Supported formats
+              </button>
+            </div>
+            <div class="relative">
+              <input id="attachment" name="attachment" type="file"
+                accept=".jpg,.jpeg,.png,.pdf" class="sr-only" />
+              <label for="attachment"
+                class="flex items-center justify-between px-4 py-3 border border-dashed border-gray-300 rounded-xl cursor-pointer hover:bg-gray-50">
+                <div class="flex items-center space-x-3">
+                  <div
+                    class="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center">
+                    <svg class="w-5 h-5 text-gray-500" fill="none"
+                      stroke="currentColor" viewBox="0 0 24 24"
+                      aria-hidden="true"><path stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2"
+                        d="M7 16a4 4 0 005 3.87V21h6v-1.13A4 4 0 0017 16m-5 0a4 4 0 00-4-4m4 4V4m0 0L8 7m4-3l4 3" /></svg>
+                  </div>
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">Attach
+                      file</div>
+                    <div class="text-xs text-gray-500">JPG, PNG, or PDF (max
+                      5MB)</div>
+                  </div>
+                </div>
+                <span id="attachmentName"
+                  class="text-xs text-gray-600 truncate max-w-[50%]"></span>
+              </label>
+            </div>
+            <p id="attachmentError"
+              class="mt-1 text-xs text-red-600 hidden"></p>
+          </div>
+
+          <!-- Submit -->
+          <div class="pt-2 flex items-center justify-between">
+            <a href="tel:+639171234567"
+              class="text-sm text-primary hover:text-sky-600">Need Immediate
+              Help?</a>
+            <div class="flex items-center gap-3">
+              <button type="button" id="trackTicketBtn"
+                class="text-sm text-gray-700 hover:text-gray-900">Track ticket
+                status</button>
+              <button type="submit" id="submitBtn"
+                class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-xl font-medium shadow hover:shadow-md hover:bg-sky-500 transition">
+                <span id="submitText">Send Message</span>
+                <svg id="submitSpinner" class="hidden ml-2 h-5 w-5 animate-spin"
+                  viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10"
+                    stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Track Ticket Modal -->
+    <div id="trackModal" class="hidden fixed inset-0 bg-gray-900/40 z-50">
+      <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-soft w-full max-w-md p-6">
+          <div class="flex items-start justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">Track Ticket</h3>
+            <button id="closeTrackModal"
+              class="text-gray-500 hover:text-gray-700" aria-label="Close">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24"><path stroke-linecap="round"
+                  stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <label for="trackEmail"
+                class="block text-sm font-medium text-gray-700 mb-1">Email
+                Address</label>
+              <input id="trackEmail" type="email"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="your@email.com" />
+            </div>
+            <div>
+              <label for="ticketId"
+                class="block text-sm font-medium text-gray-700 mb-1">Ticket
+                ID</label>
+              <input id="ticketId" type="text"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="e.g., TCK-123456" />
+            </div>
+            <button id="performTrackBtn"
+              class="w-full px-4 py-2 bg-primary text-white rounded-lg hover:bg-sky-500">Check
+              Status</button>
+            <div id="trackResult" class="text-sm"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    const contactForm = document.getElementById('contactForm');
+    const fullName = document.getElementById('fullName');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+    const attachment = document.getElementById('attachment');
+    const attachmentName = document.getElementById('attachmentName');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+    const submitSpinner = document.getElementById('submitSpinner');
+    const alertContainer = document.getElementById('alertContainer');
+
+    const fullNameError = document.getElementById('fullNameError');
+    const emailError = document.getElementById('emailError');
+    const messageError = document.getElementById('messageError');
+    const attachmentError = document.getElementById('attachmentError');
+
+    const trackModal = document.getElementById('trackModal');
+    const trackTicketBtn = document.getElementById('trackTicketBtn');
+    const closeTrackModal = document.getElementById('closeTrackModal');
+    const performTrackBtn = document.getElementById('performTrackBtn');
+    const trackEmail = document.getElementById('trackEmail');
+    const ticketId = document.getElementById('ticketId');
+    const trackResult = document.getElementById('trackResult');
+
+    attachment.addEventListener('change', () => {
+      attachmentError.classList.add('hidden');
+      attachmentError.textContent = '';
+      const file = attachment.files?.[0];
+      if (!file) { attachmentName.textContent = ''; return; }
+      const allowed = ['image/jpeg', 'image/png', 'application/pdf'];
+      const tooBig = file.size > 5 * 1024 * 1024;
+      if (!allowed.includes(file.type)) {
+        attachmentName.textContent = '';
+        attachmentError.textContent = 'Unsupported file type. Use JPG, PNG, or PDF.';
+        attachmentError.classList.remove('hidden');
+        attachment.value = '';
+        return;
+      }
+      if (tooBig) {
+        attachmentName.textContent = '';
+        attachmentError.textContent = 'File too large. Maximum size is 5 MB.';
+        attachmentError.classList.remove('hidden');
+        attachment.value = '';
+        return;
+      }
+      attachmentName.textContent = file.name;
+    });
+
+    function isValidEmail(value) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(value);
+    }
+
+    function showAlert(message, type = 'success') {
+      const wrapper = document.createElement('div');
+      wrapper.className = `p-4 rounded-xl shadow-soft text-white ${type === 'success' ? 'bg-green-500' : type === 'error' ? 'bg-red-500' : 'bg-accentTeal'} `;
+      wrapper.setAttribute('role', 'status');
+      wrapper.innerHTML = `
+        <div class="flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            ${type === 'success' ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />' : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />'}
+          </svg>
+          <span class="font-medium">${message}</span>
+        </div>`;
+      alertContainer.appendChild(wrapper);
+      setTimeout(() => wrapper.remove(), 6000);
+      wrapper.focus?.();
+    }
+
+    function setFieldError(input, errorEl, msg) {
+      input.setAttribute('aria-invalid', 'true');
+      errorEl.textContent = msg;
+      errorEl.classList.remove('hidden');
+    }
+
+    function clearFieldError(input, errorEl) {
+      input.removeAttribute('aria-invalid');
+      errorEl.textContent = '';
+      errorEl.classList.add('hidden');
+    }
+
+    function validateForm() {
+      let ok = true;
+      // Full name
+      if (!fullName.value.trim()) {
+        setFieldError(fullName, fullNameError, 'Full name is required.');
+        ok = false;
+      } else {
+        clearFieldError(fullName, fullNameError);
+      }
+      // Email
+      if (!email.value.trim()) {
+        setFieldError(email, emailError, 'Email address is required.');
+        ok = false;
+      } else if (!isValidEmail(email.value.trim())) {
+        setFieldError(email, emailError, 'Please enter a valid email address.');
+        ok = false;
+      } else {
+        clearFieldError(email, emailError);
+      }
+      // Message
+      if (!message.value.trim()) {
+        setFieldError(message, messageError, 'Please describe your issue.');
+        ok = false;
+      } else {
+        clearFieldError(message, messageError);
+      }
+      return ok;
+    }
+
+    function setLoading(loading) {
+      if (loading) {
+        submitBtn.disabled = true;
+        submitText.textContent = 'Sending...';
+        submitSpinner.classList.remove('hidden');
+      } else {
+        submitBtn.disabled = false;
+        submitText.textContent = 'Send Message';
+        submitSpinner.classList.add('hidden');
+      }
+    }
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      alertContainer.innerHTML = '';
+      if (!validateForm()) {
+        // Focus first invalid
+        const invalid = contactForm.querySelector('[aria-invalid="true"]');
+        invalid?.focus();
+        return;
+      }
+      setLoading(true);
+      try {
+        // Collect data
+        const data = new FormData(contactForm);
+        const method = (contactForm.querySelector('input[name="submitMethod"]:checked')?.value) || 'email';
+
+        // Placeholder: integrate your API
+        // Example for email API:
+        // await fetch('/api/support/email', { method: 'POST', body: data });
+        // Example for DB store:
+        // await fetch('/api/support/ticket', { method: 'POST', body: data });
+
+        // Simulate request
+        await new Promise(r => setTimeout(r, 1500));
+        // randomize small failure chance
+        const failed = Math.random() < 0.05;
+        if (failed) throw new Error('Network error');
+
+        // Generate a simple ticket id
+        const ticketId = 'TCK-' + Math.floor(100000 + Math.random()*900000);
+        showAlert(`Your message has been sent via ${method === 'email' ? 'Email API' : 'Dashboard ticket' }. Ticket ID: ${ticketId}`, 'success');
+        contactForm.reset();
+        attachmentName.textContent = '';
+      } catch (err) {
+        showAlert('Failed to send your message. Please try again.', 'error');
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    // Track ticket modal logic
+    function openTrackModal() { trackModal.classList.remove('hidden'); }
+    function closeTrack() { trackModal.classList.add('hidden'); trackResult.innerHTML=''; }
+    trackTicketBtn.addEventListener('click', openTrackModal);
+    closeTrackModal.addEventListener('click', closeTrack);
+    trackModal.addEventListener('click', (e) => { if (e.target === trackModal) closeTrack(); });
+
+    performTrackBtn.addEventListener('click', () => {
+      trackResult.className = 'text-sm';
+      trackResult.textContent = '';
+      const emailVal = trackEmail.value.trim();
+      const idVal = ticketId.value.trim().toUpperCase();
+      if (!emailVal || !isValidEmail(emailVal) || !idVal) {
+        trackResult.className = 'text-sm text-red-600';
+        trackResult.textContent = 'Enter a valid email and ticket ID.';
+        return;
+      }
+      trackResult.className = 'text-sm text-gray-600';
+      trackResult.textContent = 'Checking...';
+      setTimeout(() => {
+        const statuses = ['Received','In Review','Awaiting Info','Resolved'];
+        const status = statuses[Math.floor(Math.random()*statuses.length)];
+        trackResult.className = status === 'Resolved' ? 'text-sm text-green-600' : 'text-sm text-accentOrange';
+        trackResult.textContent = `Status for ${idVal}: ${status}`;
+      }, 1000);
+    });
+  </script>
+  </body>
+</html>

@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iEnroll - Step 3</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" href="/src/images/logo.png" type="image/x-icon">
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#00BFFF',
+                            secondary: '#F8F9FA',
+                            accent: '#FFA500'
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @keyframes slideUp {
+                from { transform: translateY(10px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+            .drag-over {
+                border-color: #00BFFF !important;
+                background-color: #f0f9ff !important;
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            }
+            .file-preview-enter {
+                animation: slideUp 0.3s ease-out;
+            }
+        </style>
+    </head>
+    <body class="bg-gray-50 font-['Inter']">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"></path>
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-xl font-semibold text-gray-900">iEnroll</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Progress Tracker -->
+            <div class="mb-8">
+                <div class="flex items-center justify-center space-x-4">
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-gray-900">Personal
+                            Info</span>
+                    </div>
+                    <div class="w-16 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-gray-900">Academic
+                            Info</span>
+                    </div>
+                    <div class="w-16 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                            <span
+                                class="text-white text-sm font-medium">3</span>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-primary">Requirements</span>
+                    </div>
+                    <div class="w-16 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                            <span
+                                class="text-gray-500 text-sm font-medium">4</span>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-gray-500">Review
+                            & Submit</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Academic Requirements Form -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <!-- Step Indicator -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h2
+                                    class="text-2xl font-bold text-gray-900">Academic
+                                    Requirements</h2>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center space-x-2">
+                                        <div
+                                            class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                        <span
+                                            class="text-sm text-green-600 font-medium"
+                                            id="draftStatus">Draft Saved</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm text-gray-600">Step
+                                            3 of 4</span>
+                                        <div
+                                            class="w-24 bg-gray-200 rounded-full h-2">
+                                            <div
+                                                class="bg-primary h-2 rounded-full"
+                                                style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">Upload all required
+                                documents to complete your enrollment.</p>
+                        </div>
+
+                        <form id="requirementsForm" class="space-y-6">
+                            <!-- Required Documents Section -->
+                            <div class="space-y-4">
+                                <h3
+                                    class="text-lg font-semibold text-gray-900">Required
+                                    Documents</h3>
+                                <div class="space-y-3">
+                                    <div
+                                        class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                        <div class="flex items-center">
+                                            <div
+                                                class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-3">
+                                                <svg class="w-4 h-4 text-white"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                                </svg>
+                                            </div>
+                                            <span
+                                                class="text-sm font-medium text-gray-700">High
+                                                School Transcript</span>
+                                        </div>
+                                        <span id="transcript-status"
+                                            class="px-2 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">Missing</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                        <div class="flex items-center">
+                                            <div
+                                                class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-3">
+                                                <svg class="w-4 h-4 text-white"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                                </svg>
+                                            </div>
+                                            <span
+                                                class="text-sm font-medium text-gray-700">Birth
+                                                Certificate</span>
+                                        </div>
+                                        <span id="birth-status"
+                                            class="px-2 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">Missing</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                        <div class="flex items-center">
+                                            <div
+                                                class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-3">
+                                                <svg class="w-4 h-4 text-white"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V4a2 2 0 114 0v2m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
+                                                </svg>
+                                            </div>
+                                            <span
+                                                class="text-sm font-medium text-gray-700">Valid
+                                                ID</span>
+                                        </div>
+                                        <span id="id-status"
+                                            class="px-2 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">Missing</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                        <div class="flex items-center">
+                                            <div
+                                                class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-3">
+                                                <svg class="w-4 h-4 text-white"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                                </svg>
+                                            </div>
+                                            <span
+                                                class="text-sm font-medium text-gray-700">Medical
+                                                Certificate</span>
+                                        </div>
+                                        <span id="medical-status"
+                                            class="px-2 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">Missing</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Upload Zone -->
+                            <div class="space-y-4">
+                                <h3
+                                    class="text-lg font-semibold text-gray-900">Upload
+                                    Documents</h3>
+
+                                <!-- Drag & Drop Area -->
+                                <div id="upload-zone"
+                                    class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer">
+                                    <div class="space-y-4">
+                                        <div
+                                            class="mx-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+                                            <svg class="w-8 h-8 text-white"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p
+                                                class="text-lg font-medium text-gray-900">Drop
+                                                files here or click to
+                                                browse</p>
+                                            <p
+                                                class="text-sm text-gray-500 mt-1">Supports
+                                                JPG, PNG, PDF, DOCX (Max 10MB
+                                                each)</p>
+                                        </div>
+                                        <button type="button" id="browse-btn"
+                                            class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                                            Choose Files
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Hidden File Input -->
+                                <input type="file" id="file-input" multiple
+                                    accept=".jpg,.jpeg,.png,.pdf,.docx"
+                                    class="hidden">
+
+                                <!-- Upload Progress -->
+                                <div id="upload-progress" class="hidden">
+                                    <div
+                                        class="flex items-center justify-between mb-2">
+                                        <span
+                                            class="text-sm font-medium text-gray-700">Uploading...</span>
+                                        <span id="progress-text"
+                                            class="text-sm text-gray-500">0%</span>
+                                    </div>
+                                    <div
+                                        class="w-full bg-gray-200 rounded-full h-2">
+                                        <div id="progress-bar"
+                                            class="bg-primary h-2 rounded-full transition-all duration-300"
+                                            style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Navigation Buttons -->
+                            <div
+                                class="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
+                                <button type="button" onclick="goToStep2()"
+                                    class="flex items-center px-6 py-3 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                    <svg class="w-5 h-5 mr-2" fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                    Back to Step 2
+                                </button>
+                                <button type="button" id="next-btn"
+                                    onclick="goToStep4()"
+                                    class="flex items-center px-6 py-3 text-white bg-gray-400 rounded-lg cursor-not-allowed">
+                                    Next to Step 4
+                                    <svg class="w-5 h-5 ml-2" fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <!-- Quick Actions -->
+                    <div
+                        class="bg-white rounded-xl shadow-lg p-6 card-hover mb-6">
+                        <h3
+                            class="text-lg font-semibold text-gray-900 mb-4">Quick
+                            Actions</h3>
+                        <div class="space-y-3">
+                            <button
+                                class="w-full text-left p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-primary mr-3"
+                                        fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    <span
+                                        class="text-sm font-medium text-gray-700">View
+                                        Guidelines</span>
+                                </div>
+                            </button>
+                            <button
+                                class="w-full text-left p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-primary mr-3"
+                                        fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span
+                                        class="text-sm font-medium text-gray-700">Get
+                                        Help</span>
+                                </div>
+                            </button>
+                            <button
+                                class="w-full text-left p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-primary mr-3"
+                                        fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                    </svg>
+                                    <span
+                                        class="text-sm font-medium text-gray-700">Documentation</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Uploaded Files -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <h3
+                            class="text-lg font-semibold text-gray-900 mb-4">Uploaded
+                            Files</h3>
+
+                        <!-- Empty State -->
+                        <div id="empty-state"
+                            class="text-center py-12 bg-gray-50 rounded-lg">
+                            <div
+                                class="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-8 h-8 text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-gray-500">No files uploaded yet</p>
+                            <p class="text-sm text-gray-400 mt-1">Upload your
+                                documents to see them here</p>
+                        </div>
+
+                        <!-- Files List -->
+                        <div id="files-list" class="space-y-3 hidden">
+                            <!-- Files will be dynamically added here -->
+                        </div>
+
+                        <!-- Upload Summary -->
+                        <div class="bg-gray-50 rounded-lg p-4 mt-6">
+                            <h4
+                                class="text-sm font-semibold text-gray-900 mb-3">Upload
+                                Summary</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-600">Files
+                                        uploaded:</span>
+                                    <span id="files-count"
+                                        class="text-sm font-medium text-gray-900">0</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-600">Total
+                                        size:</span>
+                                    <span id="total-size"
+                                        class="text-sm font-medium text-gray-900">0
+                                        MB</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span
+                                        class="text-sm text-gray-600">Status:</span>
+                                    <span id="overall-status"
+                                        class="text-sm font-medium text-orange-600">Incomplete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-200 mt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="text-center text-sm text-gray-500">
+                    <p>&copy; 2025 iEnroll System. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Modal for File Preview -->
+        <div id="preview-modal"
+            class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+            <div class="flex items-center justify-center min-h-screen p-4">
+                <div
+                    class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
+                    <div
+                        class="flex items-center justify-between p-4 border-b border-gray-200">
+                        <h3 id="modal-title"
+                            class="text-lg font-semibold text-gray-900">File
+                            Preview</h3>
+                        <button onclick="closeModal()"
+                            class="text-gray-400 hover:text-gray-600">
+                            <svg class="w-6 h-6" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="modal-content"
+                        class="p-4 overflow-auto max-h-[calc(90vh-80px)]">
+                        <!-- Content will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let uploadedFiles = [];
+            let requiredDocuments = {
+                'transcript': false,
+                'birth': false,
+                'id': false,
+                'medical': false
+            };
+
+            // Initialize
+            document.addEventListener('DOMContentLoaded', function() {
+                setupFileUpload();
+                updateSummary();
+            });
+
+            // File Upload Setup
+            function setupFileUpload() {
+                const uploadZone = document.getElementById('upload-zone');
+                const fileInput = document.getElementById('file-input');
+                const browseBtn = document.getElementById('browse-btn');
+
+                // Click to browse
+                browseBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    fileInput.click();
+                });
+                
+                uploadZone.addEventListener('click', (e) => {
+                    if (e.target !== browseBtn) {
+                        fileInput.click();
+                    }
+                });
+
+                // Drag and drop
+                uploadZone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadZone.classList.add('drag-over');
+                });
+
+                uploadZone.addEventListener('dragleave', () => {
+                    uploadZone.classList.remove('drag-over');
+                });
+
+                uploadZone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadZone.classList.remove('drag-over');
+                    const files = Array.from(e.dataTransfer.files);
+                    handleFiles(files);
+                });
+
+                // File input change
+                fileInput.addEventListener('change', (e) => {
+                    const files = Array.from(e.target.files);
+                    handleFiles(files);
+                    // Reset input to allow same file selection again
+                    e.target.value = '';
+                });
+            }
+
+            // Handle file uploads
+            function handleFiles(files) {
+                files.forEach(file => {
+                    if (validateFile(file)) {
+                        uploadFile(file);
+                    }
+                });
+            }
+
+            // Validate file
+            function validateFile(file) {
+                const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+                const maxSize = 10 * 1024 * 1024; // 10MB
+
+                if (!allowedTypes.includes(file.type)) {
+                    showError('Invalid file type. Please upload JPG, PNG, PDF, or DOCX files.');
+                    return false;
+                }
+
+                if (file.size > maxSize) {
+                    showError('File size too large. Maximum size is 10MB.');
+                    return false;
+                }
+
+                return true;
+            }
+
+            // Upload file with progress simulation
+            function uploadFile(file) {
+                const progressContainer = document.getElementById('upload-progress');
+                const progressBar = document.getElementById('progress-bar');
+                const progressText = document.getElementById('progress-text');
+
+                progressContainer.classList.remove('hidden');
+
+                // Simulate upload progress
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.random() * 30;
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(interval);
+                        
+                        // Add file to list
+                        addFileToList(file);
+                        progressContainer.classList.add('hidden');
+                    }
+                    
+                    progressBar.style.width = progress + '%';
+                    progressText.textContent = Math.round(progress) + '%';
+                }, 200);
+            }
+
+            // Add file to preview list
+            function addFileToList(file) {
+                const filesList = document.getElementById('files-list');
+                const emptyState = document.getElementById('empty-state');
+                emptyState.classList.add('hidden');
+                filesList.classList.remove('hidden');
+                const fileId = Date.now() + Math.random();
+                const fileItem = createFileItem(file, fileId);
+                filesList.appendChild(fileItem);
+                uploadedFiles.push({ id: fileId, file: file, element: fileItem });
+                // Save uploaded file names to localStorage for step 4
+                localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles.map(f => ({ name: f.file.name }))));
+                updateSummary();
+                updateDocumentStatus();
+            }
+
+            // Create file item element
+            function createFileItem(file, fileId) {
+                const isImage = file.type.startsWith('image/');
+                const fileSize = formatFileSize(file.size);
+                
+                const item = document.createElement('div');
+                item.className = 'flex items-center justify-between p-4 bg-gray-50 rounded-lg file-preview-enter';
+                item.id = `file-${fileId}`;
+                
+                item.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        ${isImage ? 
+                            `<div class="w-12 h-12 bg-gray-200 rounded-lg overflow-hidden">
+                                <img src="${URL.createObjectURL(file)}" alt="Preview" class="w-full h-full object-cover">
+                            </div>` :
+                            `<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>`
+                        }
+                        <div>
+                            <p class="text-sm font-medium text-gray-900">${file.name}</p>
+                            <p class="text-xs text-gray-500">${fileSize}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="previewFile('${fileId}')" class="text-primary hover:text-blue-600 text-sm font-medium">
+                            ${isImage ? 'View' : 'Open'}
+                        </button>
+                        <button onclick="removeFile('${fileId}')" class="text-red-600 hover:text-red-700">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+                
+                return item;
+            }
+
+            // Preview file in modal
+            function previewFile(fileId) {
+                const fileData = uploadedFiles.find(f => f.id == fileId);
+                if (!fileData) return;
+
+                const modal = document.getElementById('preview-modal');
+                const modalTitle = document.getElementById('modal-title');
+                const modalContent = document.getElementById('modal-content');
+                
+                modalTitle.textContent = fileData.file.name;
+                
+                if (fileData.file.type.startsWith('image/')) {
+                    modalContent.innerHTML = `
+                        <div class="flex justify-center">
+                            <img src="${URL.createObjectURL(fileData.file)}" alt="Preview" class="max-w-full max-h-full object-contain">
+                        </div>
+                    `;
+                } else {
+                    modalContent.innerHTML = `
+                        <div class="text-center py-12">
+                            <div class="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-gray-600 mb-2">Document Preview</p>
+                            <p class="text-sm text-gray-500">This document will be reviewed by our staff</p>
+                            <a href="${URL.createObjectURL(fileData.file)}" target="_blank" class="inline-block mt-4 bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                                Download File
+                            </a>
+                        </div>
+                    `;
+                }
+                
+                modal.classList.remove('hidden');
+            }
+
+            // Remove file
+            function removeFile(fileId) {
+                const fileData = uploadedFiles.find(f => f.id == fileId);
+                if (!fileData) return;
+
+                // Remove from DOM
+                fileData.element.remove();
+                
+                // Remove from array
+                uploadedFiles = uploadedFiles.filter(f => f.id != fileId);
+                
+                // Show empty state if no files
+                if (uploadedFiles.length === 0) {
+                    document.getElementById('files-list').classList.add('hidden');
+                    document.getElementById('empty-state').classList.remove('hidden');
+                }
+                
+                updateSummary();
+                updateDocumentStatus();
+            }
+
+            // Update summary
+            function updateSummary() {
+                const filesCount = document.getElementById('files-count');
+                const totalSize = document.getElementById('total-size');
+                const overallStatus = document.getElementById('overall-status');
+                const nextBtn = document.getElementById('next-btn');
+
+                filesCount.textContent = uploadedFiles.length;
+                
+                const totalBytes = uploadedFiles.reduce((sum, f) => sum + f.file.size, 0);
+                totalSize.textContent = formatFileSize(totalBytes);
+                
+                const allRequired = Object.values(requiredDocuments).every(status => status);
+                overallStatus.textContent = allRequired ? 'Complete' : 'Incomplete';
+                overallStatus.className = allRequired ? 'text-sm font-medium text-green-600' : 'text-sm font-medium text-orange-600';
+                
+                // Enable/disable next button
+                if (allRequired) {
+                    nextBtn.disabled = false;
+                    nextBtn.className = 'flex items-center px-6 py-3 text-white bg-primary rounded-lg hover:bg-blue-600 transition-colors';
+                } else {
+                    nextBtn.disabled = true;
+                    nextBtn.className = 'flex items-center px-6 py-3 text-white bg-gray-400 rounded-lg cursor-not-allowed';
+                }
+            }
+
+            // Update document status
+            function updateDocumentStatus() {
+                // This would typically check file names or content to determine document type
+                // For demo purposes, we'll simulate based on file count
+                const fileCount = uploadedFiles.length;
+                
+                if (fileCount >= 1) {
+                    updateStatus('transcript', 'Accepted', 'green');
+                }
+                if (fileCount >= 2) {
+                    updateStatus('birth', 'Accepted', 'green');
+                }
+                if (fileCount >= 3) {
+                    updateStatus('id', 'Accepted', 'green');
+                }
+                if (fileCount >= 4) {
+                    updateStatus('medical', 'Accepted', 'green');
+                }
+            }
+
+            // Update status badge
+            function updateStatus(docType, status, color) {
+                const statusElement = document.getElementById(`${docType}-status`);
+                if (statusElement) {
+                    statusElement.textContent = status;
+                    statusElement.className = `px-2 py-1 text-xs font-medium bg-${color}-100 text-${color}-800 rounded-full`;
+                    requiredDocuments[docType] = status === 'Accepted';
+                }
+            }
+
+            // Utility functions
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            function showError(message) {
+                // Create temporary error notification
+                const notification = document.createElement('div');
+                notification.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+
+            function closeModal() {
+                document.getElementById('preview-modal').classList.add('hidden');
+            }
+
+            // Navigation functions
+            function goToStep2() {
+                window.location.href = 'enrollment-step2.html';
+            }
+
+            function goToStep4() {
+                if (Object.values(requiredDocuments).every(status => status)) {
+               window.location.href = 'enrollment-step4.html';
+                } else {
+                    alert('Please upload all required documents before proceeding.');
+                }
+            }
+
+            // Close modal when clicking outside
+            document.getElementById('preview-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Settings - iEnroll System</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" href="/src/images/logo.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'sky-blue': '#0ea5e9',
+                        'teal': '#0d9488',
+                        'light-gray': '#f8fafc',
+                        'yellow': '#fbbf24',
+                        'primary': '#00BFFF',
+                    }
+                }
+            }
+        }
+    </script>
+    </head>
+    <body class="font-inter bg-light-gray">
+        <!-- Header -->
+        <body class="font-inter min-h-screen bg-gray-50">
+            <!-- Navigation Sidebar -->
+            <div class="flex min-h-screen">
+                <!-- SIDEBAR -->
+                <aside
+                    class="w-72 bg-white border-r border-gray-200 p-4 hidden md:block">
+                    <div class="mb-6">
+                        <div class="bg-primary text-white px-4 py-3 rounded-lg">
+                            <h1 class="font-semibold text-xl">iEnroll
+                                Admin</h1>
+                            <p class="text-blue-100 text-sm mt-1">School
+                                Management System</p>
+                        </div>
+                    </div>
+
+                    <nav class="mt-6">
+                        <a href="admin-dashboard.html"
+                            class="flex items-center px-6 py-3 text-gray-700 hover:bg-primary rounded-md hover:text-white transition-colors">
+                            <svg class="w-5 h-5 mr-3" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
+                            </svg>
+                            Dashboard
+                        </a>
+                        <a href="enrollment-management.html"
+                            class="flex items-center px-6 py-3 text-gray-700 hover:bg-primary rounded-md hover:text-white transition-colors">
+                            <svg class="w-5 h-5 mr-3" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                            </svg>
+                            Enrollment
+                        </a>
+                        <a href="queue-management.html"
+                            class="flex items-center px-6 py-3 text-gray-700 hover:bg-primary rounded-md hover:text-white transition-colors">
+                            <svg class="w-5 h-5 mr-3" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 00-2 2v2h2V7z"></path>
+                            </svg>
+                            Queue
+                        </a>
+                        <a href="report-management.html"
+                            class="flex items-center px-6 py-3 text-gray-700 hover:bg-primary rounded-md hover:text-white transition-colors">
+                            <svg class="w-5 h-5 mr-3" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                            Reports & Analytics
+                        </a>
+                        <a href="school-calendar.html"
+                            class="flex items-center px-6 py-3 text-gray-700 hover:bg-primary rounded-md hover:text-white transition-colors">
+                            <svg class="w-5 h-5 mr-3" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="2" aria-hidden="true">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            School Calendar
+                        </a>
+                        <a href="admin-settings.html"
+                            class="flex items-center px-6 py-3 text-gray-700 hover:bg-primary rounded-md hover:text-white transition-colors">
+                            <svg class="w-5 h-5 mr-3" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            Settings
+                        </a>
+                        <div class="pt-4 mt-4 border-t border-gray-200">
+                            <a href="#" id="logoutButton"
+                                class="nav-link flex items-center px-4 py-3 text-red-600 hover:bg-red-50 hover:text-red-700 rounded-lg transition-all duration-200">
+                                <svg class="w-5 h-5 mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        d="M17 16l4-4m0 0l-4-4m4 4H9M13 20H7a2 2 0 01-2-2V6a2 2 0 012-2h6"></path>
+                                </svg>
+                                Logout
+                            </a>
+                        </div>
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                        <!-- Sidebar Navigation -->
+                        <div class="lg:col-span-1">
+                            <nav class="space-y-2">
+                                <button onclick="showSection('account')"
+                                    class="w-full text-left px-4 py-3 text-sm font-medium text-sky-blue bg-blue-50 border border-sky-blue rounded-lg">
+                                    Account Settings
+                                </button>
+                                <button onclick="showSection('system')"
+                                    class="w-full text-left px-4 py-3 text-sm font-medium text-gray-600 hover:text-sky-blue hover:bg-blue-50 rounded-lg">
+                                    System Preferences
+                                </button>
+                                <button onclick="showSection('theme')"
+                                    class="w-full text-left px-4 py-3 text-sm font-medium text-gray-600 hover:text-sky-blue hover:bg-blue-50 rounded-lg">
+                                    Theme & Display
+                                </button>
+                                <button onclick="showSection('data')"
+                                    class="w-full text-left px-4 py-3 text-sm font-medium text-gray-600 hover:text-sky-blue hover:bg-blue-50 rounded-lg">
+                                    Data Management
+                                </button>
+                                <button onclick="showSection('users')"
+                                    class="w-full text-left px-4 py-3 text-sm font-medium text-gray-600 hover:text-sky-blue hover:bg-blue-50 rounded-lg">
+                                    User Roles & Permissions
+                                </button>
+                                <button onclick="showSection('audit')"
+                                    class="w-full text-left px-4 py-3 text-sm font-medium text-gray-600 hover:text-sky-blue hover:bg-blue-50 rounded-lg">
+                                    Audit Logs
+                                </button>
+                            </nav>
+                        </div>
+
+                        <!-- Content Area -->
+                        <div class="lg:col-span-3">
+                            <!-- Account Settings Section -->
+                            <div id="account" class="settings-section">
+                                <div
+                                    class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                                    <h2
+                                        class="text-xl font-semibold text-gray-900 mb-6">Account
+                                        Settings</h2>
+
+                                    <!-- Change Password -->
+                                    <div class="mb-8">
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Change
+                                            Password</h3>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Current
+                                                    Password</label>
+                                                <input type="password"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">New
+                                                    Password</label>
+                                                <input type="password"
+                                                    id="newPassword"
+                                                    onkeyup="checkPasswordStrength()"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                                <div class="mt-2">
+                                                    <div class="flex space-x-2">
+                                                        <div
+                                                            class="h-2 flex-1 bg-gray-200 rounded-full overflow-hidden">
+                                                            <div
+                                                                id="strengthBar"
+                                                                class="h-full transition-all duration-300"></div>
+                                                        </div>
+                                                    </div>
+                                                    <p id="strengthText"
+                                                        class="text-sm text-gray-600 mt-1">Password
+                                                        strength indicator</p>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Confirm
+                                                    New Password</label>
+                                                <input type="password"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                            </div>
+                                            <button
+                                                class="bg-sky-blue text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                                                Update Password
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Contact Information -->
+                                    <div class="mb-8">
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Contact
+                                            Information</h3>
+                                        <div
+                                            class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Email
+                                                    Address</label>
+                                                <input type="email"
+                                                    value="admin@ienroll.edu"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Phone
+                                                    Number</label>
+                                                <input type="tel"
+                                                    value="+1 (555) 123-4567"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                            </div>
+                                        </div>
+                                        <button
+                                            class="mt-4 bg-sky-blue text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                                            Update Contact Info
+                                        </button>
+                                    </div>
+
+                                    <!-- 2FA Authentication -->
+                                    <div>
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Two-Factor
+                                            Authentication</h3>
+                                        <div
+                                            class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                            <div>
+                                                <p
+                                                    class="text-sm font-medium text-gray-700">2FA
+                                                    Status</p>
+                                                <p
+                                                    class="text-sm text-gray-500">Currently
+                                                    enabled</p>
+                                            </div>
+                                            <label
+                                                class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" checked
+                                                    class="sr-only peer">
+                                                <div
+                                                    class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-sky-blue rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-blue"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- System Preferences Section -->
+                            <div id="system" class="settings-section hidden">
+                                <div
+                                    class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                                    <h2
+                                        class="text-xl font-semibold text-gray-900 mb-6">System
+                                        Preferences</h2>
+
+                                    <!-- School Year & Semester -->
+                                    <div class="mb-8">
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Academic
+                                            Calendar</h3>
+                                        <div
+                                            class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">School
+                                                    Year</label>
+                                                <select
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                                    <option>2024-2025</option>
+                                                    <option>2025-2026</option>
+                                                    <option>2026-2027</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Current
+                                                    Semester</label>
+                                                <select
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                                    <option>First
+                                                        Semester</option>
+                                                    <option>Second
+                                                        Semester</option>
+                                                    <option>Summer</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Queue Settings -->
+                                    <div class="mb-8">
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Queue
+                                            Management</h3>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Queue
+                                                    Time Limit (minutes)</label>
+                                                <input type="number" value="30"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Priority
+                                                    Rules</label>
+                                                <select
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                                    <option>First come, first
+                                                        served</option>
+                                                    <option>Priority by student
+                                                        type</option>
+                                                    <option>Priority by
+                                                        course</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Notifications -->
+                                    <div>
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Notifications</h3>
+                                        <div class="space-y-3">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <span
+                                                    class="text-sm font-medium text-gray-700">Email
+                                                    Notifications</span>
+                                                <label
+                                                    class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox"
+                                                        checked
+                                                        class="sr-only peer">
+                                                    <div
+                                                        class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-sky-blue rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-blue"></div>
+                                                </label>
+                                            </div>
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <span
+                                                    class="text-sm font-medium text-gray-700">SMS
+                                                    Notifications</span>
+                                                <label
+                                                    class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox"
+                                                        class="sr-only peer">
+                                                    <div
+                                                        class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-sky-blue rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-blue"></div>
+                                                </label>
+                                            </div>
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <span
+                                                    class="text-sm font-medium text-gray-700">In-App
+                                                    Notifications</span>
+                                                <label
+                                                    class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox"
+                                                        checked
+                                                        class="sr-only peer">
+                                                    <div
+                                                        class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-sky-blue rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-blue"></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Theme & Display Section -->
+                            <div id="theme" class="settings-section hidden">
+                                <div
+                                    class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                                    <h2
+                                        class="text-xl font-semibold text-gray-900 mb-6">Theme
+                                        & Display Options</h2>
+
+                                    <!-- Dark/Light Mode -->
+                                    <div class="mb-8">
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Theme
+                                            Mode</h3>
+                                        <div
+                                            class="flex items-center space-x-4">
+                                            <label class="flex items-center">
+                                                <input type="radio" name="theme"
+                                                    value="light" checked
+                                                    class="mr-2 text-sky-blue">
+                                                <span
+                                                    class="text-sm font-medium text-gray-700">Light
+                                                    Mode</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="radio" name="theme"
+                                                    value="dark"
+                                                    class="mr-2 text-sky-blue">
+                                                <span
+                                                    class="text-sm font-medium text-gray-700">Dark
+                                                    Mode</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="radio" name="theme"
+                                                    value="auto"
+                                                    class="mr-2 text-sky-blue">
+                                                <span
+                                                    class="text-sm font-medium text-gray-700">Auto
+                                                    (System)</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sidebar Mode -->
+                                    <div>
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Sidebar
+                                            Display</h3>
+                                        <div
+                                            class="flex items-center space-x-4">
+                                            <label class="flex items-center">
+                                                <input type="radio"
+                                                    name="sidebar" value="full"
+                                                    checked
+                                                    class="mr-2 text-sky-blue">
+                                                <span
+                                                    class="text-sm font-medium text-gray-700">Full
+                                                    Mode</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="radio"
+                                                    name="sidebar"
+                                                    value="compact"
+                                                    class="mr-2 text-sky-blue">
+                                                <span
+                                                    class="text-sm font-medium text-gray-700">Compact
+                                                    Mode</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Data Management Section -->
+                            <div id="data" class="settings-section hidden">
+                                <div
+                                    class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                                    <h2
+                                        class="text-xl font-semibold text-gray-900 mb-6">Data
+                                        Management</h2>
+
+                                    <!-- Backup & Restore -->
+                                    <div class="mb-8">
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Backup
+                                            & Restore</h3>
+                                        <div class="space-y-4">
+                                            <div
+                                                class="flex items-center space-x-4">
+                                                <button
+                                                    class="bg-sky-blue text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                                                    Create Backup
+                                                </button>
+                                                <button
+                                                    class="bg-teal text-white px-6 py-2 rounded-lg hover:bg-teal-600 transition-colors">
+                                                    Restore from Backup
+                                                </button>
+                                            </div>
+                                            <p
+                                                class="text-sm text-gray-600">Last
+                                                backup: 2 hours ago</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Clear Data -->
+                                    <div>
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Clear
+                                            Old Data</h3>
+                                        <div class="space-y-4">
+                                            <div
+                                                class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                                <p
+                                                    class="text-sm text-yellow-800">⚠️
+                                                    This action cannot be
+                                                    undone. Please be careful
+                                                    when clearing data.</p>
+                                            </div>
+                                            <div
+                                                class="flex items-center space-x-4">
+                                                <button
+                                                    onclick="showClearDataModal()"
+                                                    class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">
+                                                    Clear Queue History
+                                                </button>
+                                                <button
+                                                    onclick="showClearDataModal()"
+                                                    class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">
+                                                    Clear Old Records
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- User Roles & Permissions Section -->
+                            <div id="users" class="settings-section hidden">
+                                <div
+                                    class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                                    <h2
+                                        class="text-xl font-semibold text-gray-900 mb-6">User
+                                        Roles & Permissions</h2>
+
+                                    <!-- Add Admin User -->
+                                    <div class="mb-8">
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Add
+                                            New Admin User</h3>
+                                        <div
+                                            class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Full
+                                                    Name</label>
+                                                <input type="text"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                                <input type="email"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                                                <select
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                                    <option>Super Admin</option>
+                                                    <option>Admin</option>
+                                                    <option>Moderator</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Modules
+                                                    Access</label>
+                                                <div class="space-y-2">
+                                                    <label
+                                                        class="flex items-center">
+                                                        <input type="checkbox"
+                                                            class="mr-2 text-sky-blue">
+                                                        <span
+                                                            class="text-sm text-gray-700">Enrollment
+                                                            Management</span>
+                                                    </label>
+                                                    <label
+                                                        class="flex items-center">
+                                                        <input type="checkbox"
+                                                            class="mr-2 text-sky-blue">
+                                                        <span
+                                                            class="text-sm text-gray-700">Queue
+                                                            Management</span>
+                                                    </label>
+                                                    <label
+                                                        class="flex items-center">
+                                                        <input type="checkbox"
+                                                            class="mr-2 text-sky-blue">
+                                                        <span
+                                                            class="text-sm text-gray-700">Reports</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button
+                                            class="mt-4 bg-sky-blue text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                                            Add User
+                                        </button>
+                                    </div>
+
+                                    <!-- Current Users -->
+                                    <div>
+                                        <h3
+                                            class="text-lg font-medium text-gray-800 mb-4">Current
+                                            Admin Users</h3>
+                                        <div class="overflow-x-auto">
+                                            <table
+                                                class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th
+                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                                        <th
+                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                                        <th
+                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                                                        <th
+                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody
+                                                    class="bg-white divide-y divide-gray-200">
+                                                    <tr>
+                                                        <td
+                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">John
+                                                            Doe</td>
+                                                        <td
+                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">john@ienroll.edu</td>
+                                                        <td
+                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Super
+                                                            Admin</td>
+                                                        <td
+                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                            <button
+                                                                class="text-sky-blue hover:text-blue-600 mr-3">Edit</button>
+                                                            <button
+                                                                class="text-red-600 hover:text-red-700">Remove</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td
+                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Jane
+                                                            Smith</td>
+                                                        <td
+                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">jane@ienroll.edu</td>
+                                                        <td
+                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Admin</td>
+                                                        <td
+                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                            <button
+                                                                class="text-sky-blue hover:text-blue-600 mr-3">Edit</button>
+                                                            <button
+                                                                class="text-red-600 hover:text-red-700">Remove</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Audit Logs Section -->
+                            <div id="audit" class="settings-section hidden">
+                                <div
+                                    class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                                    <h2
+                                        class="text-xl font-semibold text-gray-900 mb-6">Audit
+                                        Logs</h2>
+
+                                    <!-- Filters -->
+                                    <div class="mb-6">
+                                        <div class="flex flex-wrap gap-4">
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Date
+                                                    Range</label>
+                                                <select
+                                                    class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                                    <option>Last 24
+                                                        hours</option>
+                                                    <option>Last 7 days</option>
+                                                    <option>Last 30
+                                                        days</option>
+                                                    <option>Custom
+                                                        range</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">User</label>
+                                                <select
+                                                    class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                                    <option>All users</option>
+                                                    <option>John Doe</option>
+                                                    <option>Jane Smith</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Action</label>
+                                                <select
+                                                    class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-blue focus:border-transparent">
+                                                    <option>All actions</option>
+                                                    <option>Login</option>
+                                                    <option>Data
+                                                        modification</option>
+                                                    <option>User
+                                                        management</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Logs Table -->
+                                    <div class="overflow-x-auto">
+                                        <table
+                                            class="min-w-full divide-y divide-gray-200">
+                                            <thead class="bg-gray-50">
+                                                <tr>
+                                                    <th
+                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Timestamp</th>
+                                                    <th
+                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                                                    <th
+                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                                                    <th
+                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Details</th>
+                                                    <th
+                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">IP
+                                                        Address</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody
+                                                class="bg-white divide-y divide-gray-200">
+                                                <tr>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-01-15
+                                                        14:30:25</td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">John
+                                                        Doe</td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Login</td>
+                                                    <td
+                                                        class="px-6 py-4 text-sm text-gray-500">Successful
+                                                        login from admin
+                                                        panel</td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">192.168.1.100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-01-15
+                                                        14:25:10</td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Jane
+                                                        Smith</td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Data
+                                                        Modification</td>
+                                                    <td
+                                                        class="px-6 py-4 text-sm text-gray-500">Updated
+                                                        enrollment status for
+                                                        student ID 12345</td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">192.168.1.101</td>
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-01-15
+                                                        14:20:15</td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">John
+                                                        Doe</td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">User
+                                                        Management</td>
+                                                    <td
+                                                        class="px-6 py-4 text-sm text-gray-500">Added
+                                                        new admin user:
+                                                        admin@ienroll.edu</td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">192.168.1.100</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!-- Pagination -->
+                                    <div
+                                        class="mt-6 flex items-center justify-between">
+                                        <div class="text-sm text-gray-700">
+                                            Showing 1 to 10 of 25 results
+                                        </div>
+                                        <div class="flex space-x-2">
+                                            <button
+                                                class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Previous</button>
+                                            <button
+                                                class="px-3 py-2 text-sm font-medium text-white bg-sky-blue border border-sky-blue rounded-lg">1</button>
+                                            <button
+                                                class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">2</button>
+                                            <button
+                                                class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">3</button>
+                                            <button
+                                                class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clear Data Confirmation Modal -->
+                <div id="clearDataModal"
+                    class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+                    <div
+                        class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+                        <div class="mt-3 text-center">
+                            <div
+                                class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                                <svg class="h-6 w-6 text-red-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                </svg>
+                            </div>
+                            <h3
+                                class="text-lg font-medium text-gray-900 mt-4">Confirm
+                                Action</h3>
+                            <div class="mt-2 px-7 py-3">
+                                <p class="text-sm text-gray-500">Are you sure
+                                    you want to clear this data? This action
+                                    cannot be undone.</p>
+                            </div>
+                            <div class="items-center px-4 py-3">
+                                <button onclick="hideClearDataModal()"
+                                    class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300 mr-2">
+                                    Cancel
+                                </button>
+                                <button onclick="confirmClearData()"
+                                    class="px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300">
+                                    Clear Data
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+        // Show/Hide sections
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.settings-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            // Update navigation styling
+            document.querySelectorAll('nav button').forEach(btn => {
+                btn.classList.remove('text-sky-blue', 'bg-blue-50', 'border-sky-blue');
+                btn.classList.add('text-gray-600');
+            });
+            
+            // Highlight selected button
+            event.target.classList.remove('text-gray-600');
+            event.target.classList.add('text-sky-blue', 'bg-blue-50', 'border-sky-blue');
+        }
+
+        // Password strength checker
+        function checkPasswordStrength() {
+            const password = document.getElementById('newPassword').value;
+            const strengthBar = document.getElementById('strengthBar');
+            const strengthText = document.getElementById('strengthText');
+            
+            let strength = 0;
+            let color = '';
+            let text = '';
+            
+            if (password.length >= 8) strength++;
+            if (password.match(/[a-z]/)) strength++;
+            if (password.match(/[A-Z]/)) strength++;
+            if (password.match(/[0-9]/)) strength++;
+            if (password.match(/[^a-zA-Z0-9]/)) strength++;
+            
+            switch(strength) {
+                case 0:
+                case 1:
+                    color = 'bg-red-500';
+                    text = 'Very Weak';
+                    break;
+                case 2:
+                    color = 'bg-orange-500';
+                    text = 'Weak';
+                    break;
+                case 3:
+                    color = 'bg-yellow-500';
+                    text = 'Fair';
+                    break;
+                case 4:
+                    color = 'bg-blue-500';
+                    text = 'Good';
+                    break;
+                case 5:
+                    color = 'bg-green-500';
+                    text = 'Strong';
+                    break;
+            }
+            
+            strengthBar.className = `h-full transition-all duration-300 ${color}`;
+            strengthBar.style.width = (strength * 20) + '%';
+            strengthText.textContent = `Password strength: ${text}`;
+        }
+
+        // Modal functions
+        function showClearDataModal() {
+            document.getElementById('clearDataModal').classList.remove('hidden');
+        }
+
+        function hideClearDataModal() {
+            document.getElementById('clearDataModal').classList.add('hidden');
+        }
+
+        function confirmClearData() {
+            // Add confirmation logic here
+            alert('Data cleared successfully!');
+            hideClearDataModal();
+        }
+
+        // Initialize with account section visible
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('account');
+        });
+    </script>
+                <script src="admin-script.js"></script>
+            </body>
+        </html>

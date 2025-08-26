@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iEnroll - Step 2</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" href="/src/images/logo.png" type="image/x-icon">
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00BFFF',
+                        secondary: '#F8F9FA',
+                        accent: '#FFA500'
+                    }
+                }
+            }
+        }
+    </script>
+        <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 191, 255, 0.15);
+        }
+    </style>
+    </head>
+    <body class="bg-gray-50 font-['Inter']">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"></path>
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-xl font-semibold text-gray-900">iEnroll</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Progress Tracker -->
+            <div class="mb-8">
+                <div class="flex items-center justify-center space-x-4">
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-gray-900">Personal
+                            Info</span>
+                    </div>
+                    <div class="w-16 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                            <span
+                                class="text-white text-sm font-medium">2</span>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-primary">Academic
+                            Info</span>
+                    </div>
+                    <div class="w-16 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                            <span
+                                class="text-gray-500 text-sm font-medium">3</span>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-gray-500">Requirements</span>
+                    </div>
+                    <div class="w-16 h-0.5 bg-gray-300"></div>
+                    <div class="flex items-center">
+                        <div
+                            class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                            <span
+                                class="text-gray-500 text-sm font-medium">4</span>
+                        </div>
+                        <span
+                            class="ml-2 text-sm font-medium text-gray-500">Review
+                            & Submit</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Academic Information Form -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <!-- Step Indicator -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h2
+                                    class="text-2xl font-bold text-gray-900">Academic
+                                    Information</h2>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center space-x-2">
+                                        <div
+                                            class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                        <span
+                                            class="text-sm text-green-600 font-medium"
+                                            id="draftStatus">Draft Saved</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm text-gray-600">Step
+                                            2 of 4</span>
+                                        <div
+                                            class="w-24 bg-gray-200 rounded-full h-2">
+                                            <div
+                                                class="bg-primary h-2 rounded-full"
+                                                style="width: 50%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">Please provide your
+                                academic background and program preferences.</p>
+                        </div>
+
+                        <form id="academicForm" class="space-y-6">
+                            <!-- Previous Education -->
+                            <div>
+                                <h3
+                                    class="text-lg font-semibold text-gray-800 mb-4">Previous
+                                    Education</h3>
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="lastSchool"
+                                            class="block text-sm font-medium text-gray-700 mb-2">Last
+                                            School Attended</label>
+                                        <input type="text" id="lastSchool"
+                                            name="lastSchool"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors form-input"
+                                            placeholder="Enter school name">
+                                    </div>
+                                    <div>
+                                        <label for="lastGrade"
+                                            class="block text-sm font-medium text-gray-700 mb-2">Last
+                                            Grade/Year Completed</label>
+                                        <select id="lastGrade" name="lastGrade"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors form-input">
+                                            <option value>Select
+                                                grade/year</option>
+                                            <option value="grade11">Grade
+                                                11</option>
+                                            <option value="grade12">Grade
+                                                12</option>
+                                            <option
+                                                value="college">College</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="graduationYear"
+                                            class="block text-sm font-medium text-gray-700 mb-2">Graduation
+                                            Year</label>
+                                        <input type="number" id="graduationYear"
+                                            name="graduationYear" min="1990"
+                                            max="2030"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors form-input"
+                                            placeholder="e.g., 2023">
+                                    </div>
+                                    <div>
+                                        <label for="gpa"
+                                            class="block text-sm font-medium text-gray-700 mb-2">GPA
+                                            (if applicable)</label>
+                                        <input type="number" id="gpa" name="gpa"
+                                            min="0" max="4" step="0.01"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors form-input"
+                                            placeholder="e.g., 3.5">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Program Selection -->
+                            <div>
+                                <h3
+                                    class="text-lg font-semibold text-gray-800 mb-4">Program
+                                    Selection</h3>
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="md:col-span-2">
+                                        <label for="program"
+                                            class="block text-sm font-medium text-gray-700 mb-2">Program
+                                            of Interest *</label>
+                                        <select id="program" name="program"
+                                            required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors form-input">
+                                            <option value>Select your
+                                                program</option>
+                                            <option
+                                                value="computer-science">Computer
+                                                Science</option>
+                                            <option
+                                                value="engineering">Engineering</option>
+                                            <option value="business">Business
+                                                Administration</option>
+                                            <option value="arts">Arts &
+                                                Humanities</option>
+                                            <option value="sciences">Natural
+                                                Sciences</option>
+                                            <option value="health">Health
+                                                Sciences</option>
+                                            <option
+                                                value="education">Education</option>
+                                            <option value="law">Law</option>
+                                            <option
+                                                value="medicine">Medicine</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form Actions -->
+                            <div
+                                class="flex justify-between pt-6 border-t border-gray-200">
+                                <button type="button" onclick="goToStep1()"
+                                    class="flex items-center px-6 py-3 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                    <svg class="w-5 h-5 mr-2" fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                    Back to Step 1
+                                </button>
+                                <div class="flex space-x-3">
+                                    <button type="button"
+                                        id="saveAcademicDraftBtn"
+                                        class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium">
+                                        Save Draft
+                                    </button>
+                                    <button type="button" onclick="goToStep3()"
+                                        class="flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-blue-600 transition-colors">
+                                        Next to Step 3
+                                        <svg class="w-5 h-5 ml-2" fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Academic Requirements Checklist -->
+                    <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+                        <h2
+                            class="text-2xl font-bold text-gray-800 mb-6 text-center">Academic
+                            Requirements Checklist</h2>
+
+                        <!-- Senior High School -->
+                        <div class="mb-6">
+                            <h4
+                                class="text-lg font-medium text-gray-700 mb-3">Senior
+                                High School (Grades 11-12)</h4>
+
+                            <!-- New Students/Freshmen -->
+                            <div class="mb-4">
+                                <h5
+                                    class="text-md font-medium text-gray-600 mb-2">✓
+                                    New Students/Freshmen:</h5>
+                                <ul
+                                    class="ml-6 space-y-1 text-sm text-gray-600">
+                                    <li>• Junior High School Report Card (Grade
+                                        10)</li>
+                                    <li>• Junior High School Diploma/Certificate
+                                        of Completion</li>
+                                    <li>• Certificate of Good Moral
+                                        Character</li>
+                                    <li>• Birth Certificate (PSA/NSO)</li>
+                                    <li>• 2x2 ID Picture (2 copies)</li>
+                                    <li>• Certificate of Enrollment (if
+                                        transferring mid-year)</li>
+                                </ul>
+                            </div>
+
+                            <!-- Transferees -->
+                            <div class="mb-4">
+                                <h5
+                                    class="text-md font-medium text-gray-600 mb-2">✓
+                                    Transferees:</h5>
+                                <ul
+                                    class="ml-6 space-y-1 text-sm text-gray-600">
+                                    <li>• Form 137 (Permanent Record) -
+                                        forwarded directly from previous
+                                        school</li>
+                                    <li>• Latest Report Card from previous
+                                        school</li>
+                                    <li>• Certificate of Good Moral
+                                        Character</li>
+                                    <li>• Certificate of Transfer
+                                        Credential</li>
+                                    <li>• Birth Certificate (PSA/NSO)</li>
+                                    <li>• 2x2 ID Picture (2 copies)</li>
+                                    <li>• Academic Transcript from previous
+                                        Senior High School (if applicable)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- College Enrollment -->
+                        <div class="mb-8">
+                            <h3
+                                class="text-xl font-semibold text-primary mb-4 border-b-2 border-primary pb-2">College
+                                Enrollment</h3>
+
+                            <!-- New Students/Freshmen -->
+                            <div class="mb-6">
+                                <h4
+                                    class="text-lg font-medium text-gray-700 mb-3">New
+                                    Students/Freshmen</h4>
+                                <ul
+                                    class="ml-6 space-y-1 text-sm text-gray-600">
+                                    <li>• Senior High School Report Card (Grade
+                                        12)</li>
+                                    <li>• Senior High School Diploma/Certificate
+                                        of Completion</li>
+                                    <li>• Certificate of Good Moral
+                                        Character</li>
+                                    <li>• Birth Certificate (PSA/NSO)</li>
+                                    <li>• 2x2 ID Picture (3 copies)</li>
+                                    <li>• Certificate of Enrollment (if
+                                        transferring mid-year)</li>
+                                    <li>• College Entrance Exam Results (if
+                                        required by institution)</li>
+                                    <li>• Certificate of Eligibility for College
+                                        (if applicable)</li>
+                                </ul>
+                            </div>
+
+                            <!-- Transferees -->
+                            <div class="mb-6">
+                                <h4
+                                    class="text-lg font-medium text-gray-700 mb-3">Transferees</h4>
+                                <ul
+                                    class="ml-6 space-y-1 text-sm text-gray-600">
+                                    <li>• Form 137 (Permanent Record) -
+                                        forwarded directly from previous
+                                        school</li>
+                                    <li>• Official Transcript of Records (TOR) -
+                                        forwarded directly from previous
+                                        school</li>
+                                    <li>• Certificate of Transfer
+                                        Credential</li>
+                                    <li>• Certificate of Good Moral
+                                        Character</li>
+                                    <li>• Birth Certificate (PSA/NSO)</li>
+                                    <li>• 2x2 ID Picture (3 copies)</li>
+                                    <li>• Certificate of Enrollment (if
+                                        transferring mid-year)</li>
+                                    <li>• College Entrance Exam Results (if
+                                        required by institution)</li>
+                                    <li>• Certificate of Eligibility for College
+                                        (if applicable)</li>
+                                    <li>• Academic Evaluation from previous
+                                        college (if applicable)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Additional Notes -->
+                        <div
+                            class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
+                            <h4
+                                class="text-md font-medium text-blue-800 mb-2">Important
+                                Notes:</h4>
+                            <ul class="text-sm text-blue-700 space-y-1">
+                                <li>• <strong>Form 137 and TOR:</strong> These
+                                    documents are forwarded directly from the
+                                    previous school to the new school</li>
+                                <li>• <strong>Public vs Private
+                                        Schools:</strong> Requirements are
+                                    generally the same for both types of
+                                    institutions</li>
+                                <li>• <strong>Additional Requirements:</strong>
+                                    Some schools may require additional
+                                    documents based on their specific
+                                    policies</li>
+                                <li>• <strong>Document Authentication:</strong>
+                                    All documents must be original or certified
+                                    true copies</li>
+                                <li>• <strong>Deadlines:</strong> Submit all
+                                    requirements before the enrollment deadline
+                                    to avoid delays</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <!-- Draft Status -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <h3
+                            class="text-lg font-semibold text-gray-800 mb-4">Draft
+                            Status</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Personal
+                                    Info</span>
+                                <div
+                                    class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Academic
+                                    Info</span>
+                                <div
+                                    class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span
+                                    class="text-sm text-gray-600">Requirements</span>
+                                <div
+                                    class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-600">Review &
+                                    Submit</span>
+                                <div
+                                    class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Help & Support -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <h3
+                            class="text-lg font-semibold text-gray-800 mb-4">Need
+                            Help?</h3>
+                        <div class="space-y-3">
+                            <div
+                                class="flex items-center text-sm text-gray-600">
+                                <svg class="w-5 h-5 text-primary mr-2"
+                                    fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Academic Requirements</span>
+                            </div>
+                            <div
+                                class="flex items-center text-sm text-gray-600">
+                                <svg class="w-5 h-5 text-primary mr-2"
+                                    fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Program Selection</span>
+                            </div>
+                            <div
+                                class="flex items-center text-sm text-gray-600">
+                                <svg class="w-5 h-5 text-primary mr-2"
+                                    fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Application Process</span>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full mt-4 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors">
+                            Contact Support
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-200 mt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="text-center text-sm text-gray-500">
+                    <p>&copy; 2025 iEnroll System. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+        // Initialize form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAcademicDraft();
+            setupFormHandlers();
+        });
+
+        // Save draft functionality
+        function setupFormHandlers() {
+            const form = document.getElementById('academicForm');
+            const saveBtn = document.getElementById('saveAcademicDraftBtn');
+
+            // Auto-save on input changes
+            form.addEventListener('input', debounce(saveAcademicDraft, 1000));
+
+            // Manual save button
+            saveBtn.addEventListener('click', function() {
+                saveAcademicDraft();
+                updateDraftStatus();
+            });
+        }
+
+        // Save academic draft to localStorage
+        function saveAcademicDraft() {
+            const formData = new FormData(document.getElementById('academicForm'));
+            const academicData = {};
+            
+            for (let [key, value] of formData.entries()) {
+                academicData[key] = value;
+            }
+            
+            localStorage.setItem('academicDraft', JSON.stringify(academicData));
+        }
+
+        // Load academic draft from localStorage
+        function loadAcademicDraft() {
+            const savedDraft = localStorage.getItem('academicDraft');
+            if (savedDraft) {
+                const academicData = JSON.parse(savedDraft);
+                
+                // Fill form fields
+                Object.keys(academicData).forEach(key => {
+                    const field = document.getElementById(key);
+                    if (field) {
+                        field.value = academicData[key];
+                    }
+                });
+            }
+        }
+
+        // Update draft status indicator
+        function updateDraftStatus() {
+            const draftStatus = document.getElementById('draftStatus');
+            if (draftStatus) {
+                draftStatus.innerHTML = 'Draft Saved ✓';
+                draftStatus.className = 'text-sm text-green-600 font-medium';
+                
+                // Reset status after 3 seconds
+                setTimeout(() => {
+                    draftStatus.innerHTML = 'Draft Saved';
+                    draftStatus.className = 'text-sm text-green-600 font-medium';
+                }, 3000);
+            }
+        }
+
+        // Debounce function for auto-save
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Navigation functions
+        function goToStep1() {
+            // Save before navigating
+            saveAcademicDraft();
+            window.location.href = 'enrollment-system.html';
+        }
+
+        function goToStep3() {
+            // Validate required fields
+            const program = document.getElementById('program').value;
+            if (!program) {
+                alert('Please select a program before continuing.');
+                return;
+            }
+            
+            // Save before navigating
+            saveAcademicDraft();
+            window.location.href = 'enrollment-step3.html';
+        }
+    </script>
+    </body>
+</html>
