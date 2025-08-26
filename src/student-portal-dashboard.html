@@ -16,7 +16,7 @@
                         'inter': ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        'sky': '#00BFFF',
+                        'sky-blue': '#00BFFF',
                         'sky-light': '#87CEEB',
                         'teal': '#20B2AA',
                         'orange': '#FF8C00',
@@ -68,20 +68,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <div class="bg-sky text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg">
-                        iE
-                    </div>
-                    <h1 class="text-2xl font-bold text-gray-800">iEnroll Portal</h1>
+                    <h1 class="text-2xl font-bold text-sky-blue">iEnroll Portal</h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <!-- Search Bar -->
-                    <div class="relative hidden md:block">
-                        <input type="text" placeholder="Search..." 
-                               class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky focus:border-transparent w-64">
-                        <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </div>
+                    <!-- Log out Button-->
+                     <button onclick="location.href='ienroll-homepage.html'" class="bg-red-500 hover:bg-red-600 text-white font-normal py-2 px-6 rounded-lg transition-colors">
+                        Log Out
+                    </button>
                     <!-- Dark Mode Toggle -->
                     <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
                         <svg id="dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
@@ -136,15 +129,15 @@
                         <span class="font-medium text-gray-800">Document Verification</span>
                     </div>
                     <div class="w-full bg-gray-200 rounded-full h-2">
-                        <div class="progress-bar h-2 rounded-full" style="width: 75%"></div>
+                        <div class="progress-bar h-2 rounded-full" style="width: 0%"></div>
                     </div>
-                    <div class="flex justify-between text-sm">
+                    <div class="flex justify-between text-sm mt-10">
                         <span class="text-gray-600">Progress:</span>
-                        <span class="font-medium text-sky">75% Complete</span>
+                        <span class="font-medium text-sky">0% Complete</span>
                     </div>
-                    <button class="w-full bg-sky hover:bg-sky-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                    <a href="enrollment-system.html"><button class="w-full bg-sky hover:bg-sky-600 text-white font-medium py-2 px-4 rounded-lg transition-colors mt-4">
                         Continue Enrollment
-                    </button>
+                    </button></a>
                 </div>
             </div>
 
@@ -354,7 +347,6 @@
                 month: 'long', 
                 day: 'numeric' 
             };
-            
             document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US', timeOptions);
             document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', dateOptions);
         }
@@ -364,27 +356,34 @@
             const body = document.body;
             const darkIcon = document.getElementById('dark-icon');
             const lightIcon = document.getElementById('light-icon');
-            
-            body.classList.toggle('dark-mode');
-            
-            if (body.classList.contains('dark-mode')) {
+            const enable = !body.classList.contains('dark-mode');
+            if (enable) {
+                body.classList.add('dark-mode');
                 darkIcon.classList.remove('hidden');
                 lightIcon.classList.add('hidden');
                 localStorage.setItem('darkMode', 'enabled');
             } else {
+                body.classList.remove('dark-mode');
                 darkIcon.classList.add('hidden');
                 lightIcon.classList.remove('hidden');
                 localStorage.setItem('darkMode', 'disabled');
             }
         }
 
-        // Check for saved dark mode preference
-        function checkDarkModePreference() {
+        // Set dark mode state on load
+        function setDarkModeOnLoad() {
             const darkMode = localStorage.getItem('darkMode');
+            const body = document.body;
+            const darkIcon = document.getElementById('dark-icon');
+            const lightIcon = document.getElementById('light-icon');
             if (darkMode === 'enabled') {
-                document.body.classList.add('dark-mode');
-                document.getElementById('dark-icon').classList.remove('hidden');
-                document.getElementById('light-icon').classList.add('hidden');
+                body.classList.add('dark-mode');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            } else {
+                body.classList.remove('dark-mode');
+                darkIcon.classList.add('hidden');
+                lightIcon.classList.remove('hidden');
             }
         }
 
@@ -392,9 +391,7 @@
         function refreshQueue() {
             const refreshIcon = document.getElementById('refresh-icon');
             const queueNumber = document.getElementById('queue-number');
-            
             refreshIcon.classList.add('loading-spinner');
-            
             setTimeout(() => {
                 const newPosition = Math.floor(Math.random() * 20) + 30;
                 queueNumber.textContent = newPosition;
@@ -416,12 +413,9 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             updateDateTime();
-            checkDarkModePreference();
+            setDarkModeOnLoad();
             simulateLiveUpdates();
-            
-            // Update time every minute
             setInterval(updateDateTime, 60000);
-            
             // Add fade-in animation to cards with delay
             const cards = document.querySelectorAll('.fade-in');
             cards.forEach((card, index) => {
